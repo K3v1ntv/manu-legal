@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manu legal</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      transition: background-image 1s ease-in-out;
+    }
+
+    h1 {
+      color: #ff69b4;
+      font-size: 4rem;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4, 0 0 30px #ff1493;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff1493;
+      }
+      to {
+        text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff1493, 0 0 40px #ff1493;
+      }
+    }
+
+    #btn-legalcice {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: red;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #btn-legalcice:hover {
+      transform: scale(1.1);
+    }
+
+    .explosion {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, orange, red, transparent);
+      border-radius: 50%;
+      animation: explode 0.5s ease-out forwards;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    #saida {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: white;
+      text-shadow: 0 0 5px black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Manu legal</h1>
+  <button id="btn-legalcice" onclick="ativarLegalcice()">Legalcice</button>
+  <div id="saida"></div>
+
+  <audio id="explosion-sound" src="https://www.soundjay.com/mechanical/sounds/explosion-01.mp3" preload="auto"></audio>
+
+  <script>
+    function ativarLegalcice() {
+      const explosionSound = document.getElementById("explosion-sound");
+      explosionSound.currentTime = 0;
+      explosionSound.play().catch((err) => {
+        console.log("Erro ao tocar som:", err);
+      });
+
+      const btn = document.getElementById("btn-legalcice");
+      const rect = btn.getBoundingClientRect();
+
+      const explosion = document.createElement("div");
+      explosion.className = "explosion";
+      explosion.style.left = rect.left + window.scrollX + "px";
+      explosion.style.top = rect.top + window.scrollY + "px";
+
+      document.body.appendChild(explosion);
+
+      explosion.addEventListener("animationend", () => {
+        explosion.remove();
+      });
+
+      document.getElementById("saida").innerText = "Nível de legalcice: 69%";
+
+      // Muda o fundo para batata com ketchup
+      document.body.style.backgroundImage = "url('https://images.unsplash.com/photo-1606755962778-51254e6b0a6a?auto=format&fit=crop&w=1920&q=80')";
+    }
+  </script>
+</body>
+</html>
