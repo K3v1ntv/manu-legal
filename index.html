@@ -63,16 +63,12 @@
 </head>
 <body>
   <h1>Manu legal</h1>
-  <div id="legalcice">Nível de legalcice: 1000000²</div>
+  <div id="legalcice">Nível de legalcice: 100000000000²%</div>
   <button id="botaoLegal">Legalcice</button>
 
-  <!-- Miado de gato -->
-  <audio id="explosaoSom" src="https://www.fesliyanstudios.com/play-mp3/6965" preload="auto"></audio>
-
-  <!-- Música Lo-fi de fundo -->
-  <audio id="lofimusica" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/11/07/audio_24839e8db4.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio HTML5.
+  <!-- Som de gato miando -->
+  <audio id="explosaoSom" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f8ab3c9397.mp3?filename=cat-meow-123105.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -83,7 +79,9 @@
     botao.addEventListener('click', () => {
       body.classList.add('explosao');
       som.currentTime = 0;
-      som.play();
+      som.play().catch(e => {
+        console.log("Som bloqueado pelo navegador:", e);
+      });
 
       setTimeout(() => {
         body.classList.remove('explosao');
