@@ -34,22 +34,6 @@
       border-radius: 10px;
     }
 
-    #botaoLegal {
-      padding: 20px;
-      font-size: 1.5rem;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px red;
-      transition: transform 0.2s ease;
-    }
-
-    #botaoLegal:hover {
-      transform: scale(1.1);
-    }
-
     @keyframes explodir {
       0% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.5); opacity: 0.7; }
@@ -59,12 +43,20 @@
     .explosao {
       animation: explodir 0.4s ease;
     }
+
+    #botaoLegal {
+      width: 150px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
   <h1>Manu legal</h1>
   <div id="legalcice">Nível de legalcice: 100000000000²%</div>
-  <button id="botaoLegal">Legalcice</button>
+
+  <!-- Botão como imagem -->
+  <img src="botao-start.png" id="botaoLegal" alt="Botão Start" />
 
   <!-- Som de miado -->
   <audio id="explosaoSom" preload="auto">
